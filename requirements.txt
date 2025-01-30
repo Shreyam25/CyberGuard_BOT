@@ -6,7 +6,8 @@ sentence-transformers
 chromadb
 langchain
 google-generativeai
-streamlit 
+pip uninstall streamlit
+pip install streamlit
 sqlite3 
 langchain 
 google-generativeai
