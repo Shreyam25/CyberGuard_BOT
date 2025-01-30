@@ -1,11 +1,9 @@
-# embed_store.py
 import chromadb
 from sentence_transformers import SentenceTransformer
 import spacy
 from langchain.llms import GooglePalm
 import os
 import google.generativeai as genai
-<<<<<<< HEAD
 import streamlit
 from dotenv import load_dotenv
 
@@ -13,10 +11,6 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv('API_KEY')
 
-=======
-
-import streamlit
->>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
 # Initialize ChromaDB for vector storage
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
 collection = chroma_client.get_or_create_collection(name="rag_corpus")
@@ -59,11 +53,7 @@ def generate_answer(query, context):
       # Access the secret key from the environment
 
       # Please do not use this key in other projects
-<<<<<<< HEAD
-    genai.configure(api_key=api_key)
-=======
     genai.configure(api_key=streamlit.secrets["API"])
->>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
     model = genai.GenerativeModel('gemini-pro')
 
     prompt = f"""

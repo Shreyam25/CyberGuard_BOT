@@ -17,8 +17,4 @@ text_data = " ".join(text_data)  # Combine into a single string
 
 # Save the text data to a file
 with open("dp_corpus.txt", "w", encoding="utf-8") as file:
-<<<<<<< HEAD
     file.write(text_data)
-=======
-    file.write(text_data)
->>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
