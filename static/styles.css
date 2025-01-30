@@ -9,18 +9,19 @@ body {
     background-color: #f4f7fc;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+  height: 100vh;
 }
 
 .chat-container {
-    width: 400px;
+    width: 870px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+margin-top: 50px;
+margin-bottom: 40px;
 }
 
 .header {
@@ -40,15 +41,16 @@ body {
 }
 
 .message {
-    padding: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
-    max-width: 80%;
+    max-width: 83%;
 }
 
 .message.user {
-    background-color: #e1f7d5;
-    align-self: flex-end;
+    
+        background: #dcf8c6;
+        align-self: flex-end;
+        text-align: right;
 }
 
 .message.cyberguard {

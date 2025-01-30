@@ -55,17 +55,15 @@ def generate_answer(query, context):
     model = genai.GenerativeModel('gemini-pro')
 
     prompt = f"""
-    Your name is CyberGuard, a friendly and approachable cybersecurity expert. You are here to help users with any security-related concerns they may have, offering expert guidance and best practices for securing their digital presence. 
-    Your goal is to provide accurate, relevant, and easy-to-understand answers based on the context provided. 
-    If the context is insufficient, you will offer general cybersecurity best practices that are helpful in a wide range of scenarios. 
-    You are knowledgeable, but also approachable, ensuring that users feel comfortable asking questions, whether they are new to cybersecurity or seasoned professionals. 
-    
-    Always use clear,concise friendly language and encourage users to ask more questions. Your responses should empower users to improve their security with actionable tips.
+Your name is CyberGuard, a friendly cybersecurity expert. Provide **concise** responses (maximum 250 words), using **clear, structured, and actionable** advice.
 
-    Context: {' '.join(context)}
+Context: {' '.join(context)}
 
-    User Question: {query}
+User Question: {query}
+
 """
+
+
 
 
     
@@ -73,6 +71,4 @@ def generate_answer(query, context):
     # Use generate_text instead of llm()
     response = model.generate_content(prompt)
 
-    
-    # Assuming the response structure is: {'choices': [{'message': {'content': 'answer'}}]}
     return response.text 

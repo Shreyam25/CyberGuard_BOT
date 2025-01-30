@@ -54,14 +54,13 @@ def chat():
     
     context = embed_store.retrieve_top_k(query)
     answer = embed_store.generate_answer(query, context)
-    context =  embed_store.retrieve_top_k(query)
-    answer =  embed_store.generate_answer(query, context)
+ 
     
     # Store messages in the database
-    insert_message("user", query)
-    insert_message("system", answer)
+    insert_message("You", query)
+    insert_message("CyberGuard", answer)
     
-    return jsonify({"answer": answer, "retrieved_context": context})
+    return jsonify({"answer": answer})
 
 # Flask API endpoint for history
 @app.route("/history", methods=["GET"])

@@ -23,55 +23,55 @@
     </div>
     
     <script>
-        // Function to send the user message and get the response
         function sendMessage() {
-            const userInput = document.getElementById('user-input').value;
-            if (userInput.trim() === "") return;
-
-            // Display user message
-            appendMessage('You', userInput);
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+            
+            appendMessage('You', userInput, 'user');
             document.getElementById('user-input').value = "";
-
-            // Send request to Flask backend
+            
             fetch("/chat", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ query: userInput })
             })
             .then(response => response.json())
             .then(data => {
-                const answer = data.answer;
-                appendMessage('CyberGuard', answer);
+                appendMessage('CyberGuard', data.answer, 'bot');
             })
-            .catch(error => {
-                console.error("Error:", error);
-            });
+            .catch(error => console.error("Error:", error));
         }
-
-        // Function to append message to the chat box
+        
         function appendMessage(role, message) {
             const chatBox = document.getElementById('chat-box');
             const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            messageElement.classList.add(role.toLowerCase());
-            messageElement.innerHTML = `<strong>${role}:</strong> ${message}`;
+            messageElement.classList.add('message', role.toLowerCase());
+        
+            // Convert Markdown-style formatting to HTML
+            let formattedMessage = message
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold text
+                .replace(/\* (.*?)\n?/g, '<li>$1</li>');  // Bullet points
+        
+            // Wrap bullet points inside <ul>
+            formattedMessage = formattedMessage.replace(/(<li>.*<\/li>)+/g, '<ul>$&</ul>');
+        
+            messageElement.innerHTML = `<strong>${role}:</strong> ${formattedMessage}`;
+            
             chatBox.appendChild(messageElement);
-            chatBox.scrollTop = chatBox.scrollHeight;  // Scroll to the bottom
+            chatBox.scrollTop = chatBox.scrollHeight;  // Auto-scroll to the latest message
         }
-
-        // Fetch chat history on page load
+        
+        
+        
         window.onload = function() {
             fetch("/history")
                 .then(response => response.json())
                 .then(data => {
                     data.forEach(item => {
-                        appendMessage(item.role.charAt(0).toUpperCase() + item.role.slice(1), item.content);
+                        appendMessage(item.role.charAt(0).toUpperCase() + item.role.slice(1), item.content, item.role.toLowerCase());
                     });
                 })
                 .catch(error => console.error("Error loading history:", error));
         };
     </script>
-</body>
 </html>
