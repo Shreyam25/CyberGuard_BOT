@@ -1,0 +1,14 @@
+-U langchain-community
+
+requests
+beautifulsoup4
+spacy
+sentence-transformers
+chromadb
+langchain
+google-generativeai
+streamlit 
+sqlite3 
+langchain 
+google-generativeai
+python -m spacy download en_core_web_sm
