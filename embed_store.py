@@ -1,7 +1,6 @@
 import chromadb
 from sentence_transformers import SentenceTransformer
 import spacy
-from langchain.llms import GooglePalm
 import os
 import google.generativeai as genai
 import streamlit
@@ -9,7 +8,6 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-api_key = os.getenv('API_KEY')
 
 # Initialize ChromaDB for vector storage
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
@@ -53,7 +51,7 @@ def generate_answer(query, context):
       # Access the secret key from the environment
 
       # Please do not use this key in other projects
-    genai.configure(api_key=streamlit.secrets["API"])
+    genai.configure(api_key=os.getenv("my"))
     model = genai.GenerativeModel('gemini-pro')
 
     prompt = f"""

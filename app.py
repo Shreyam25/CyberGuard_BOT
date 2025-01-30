@@ -1,16 +1,12 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
 import streamlit as st
 import sqlite3
 from datetime import datetime
-from langchain.llms import GooglePalm
 import google.generativeai as genai
 from embed_store import retrieve_top_k, generate_answer
 
-# Initialize SQLite database
 DB_CONFIG = "chat_history.db"  # SQLite database file
+
 
 # Function to initialize the SQLite database and create a table
 def init_db():
@@ -49,7 +45,7 @@ st.title("CyberGuard")
 st.markdown("""
     ## Hello, I am CyberGuard!
 
-    I am an intelligent RAG-based chatbot designed to solve your cybercrime and cybersecurity-related doubts within seconds. With access to vast databases and real-time threat intelligence, I provide accurate and quick responses to help you stay safe online.
+    I am an intelligent RAG-based chatbot designed to solve your cybercrime and cybersecurity-related doubts within seconds with short responses. 
 
     Ask me anything about cybersecurity, and I’ll guide you through potential threats, solutions, and best practices to protect your digital assets.
 """)
@@ -79,7 +75,7 @@ query = st.text_input("Ask me anything:")
 
 if query:
     # Get the answer from the AI model
-    answer, context = get_chat_answer(query)
+    answer= get_chat_answer(query)
     
     # Display the answer and context
     st.write("**Answer:**", answer)
@@ -91,3 +87,4 @@ if query:
     # Display the updated chat history
     st.write("### Chat History")
     display_history()
+
