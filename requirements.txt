@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -U langchain-community
 
 requests
@@ -12,3 +13,33 @@ sqlite3
 langchain 
 google-generativeai
 python -m spacy download en_core_web_sm
+=======
+# Deep Learning and ML Libraries
+tensorflow==2.11.0           # Adjust based on the version you're using
+torch==1.13.1                # Adjust based on your requirements
+numpy==1.23.5                # Ensure compatibility with your setup
+
+# Thinc (for NLP and Deep Learning)
+thinc==8.0.15                # Update to the specific version compatible with your environment
+
+# Cython (needed for compiling C extensions)
+cython==0.29.32              # Ensure this is up to date
+
+# Other dependencies
+pandas==1.5.1                # Example, adjust as per your needs
+scikit-learn==1.0.2          # Example, adjust as per your needs
+streamlit==1.11.0            # Ensure Streamlit version is appropriate
+
+# Optional: You may want to add these for more stability
+matplotlib==3.5.1            # For plotting (optional)
+scipy==1.9.3                 # For scientific computations (optional)
+
+requests
+beautifulsoup4
+spacy==3.0.0
+sentence-transformers
+chromadb
+langchain==0.0.129
+google-generativeai
+streamlit==1.19.0
+>>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5

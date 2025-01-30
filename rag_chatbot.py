@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from langchain_community.llms import GooglePalm
 import sqlite3
 from flask import Flask, request, jsonify, render_template
@@ -10,6 +11,17 @@ from dotenv import load_dotenv
 app = Flask(__name__)
 load_dotenv()
 api_key = os.getenv('API_KEY')
+=======
+import sqlite3
+from flask import Flask, request, jsonify
+from datetime import datetime
+from langchain.llms import GooglePalm
+import google.generativeai as genai
+import embed_store
+
+# Initialize Flask app
+app = Flask(__name__)
+>>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
 
 # Initialize database
 DB_CONFIG = "chat_history.db"  # SQLite database file
@@ -51,13 +63,22 @@ def chat():
     if not query:
         return jsonify({"error": "Query is required"}), 400
     
+<<<<<<< HEAD
     context = embed_store.retrieve_top_k(query)
     answer = embed_store.generate_answer(query, context)
+=======
+    context =  embed_store.retrieve_top_k(query)
+    answer =  embed_store.generate_answer(query, context)
+>>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
     
     # Store messages in the database
     insert_message("user", query)
     insert_message("system", answer)
     
+<<<<<<< HEAD
+=======
+    
+>>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
     return jsonify({"answer": answer, "retrieved_context": context})
 
 # Flask API endpoint for history
@@ -70,6 +91,7 @@ def history():
     conn.close()
     return jsonify(chat_history)
 
+<<<<<<< HEAD
 # Flask route to render the chatbot's HTML page
 @app.route('/')
 def home():
@@ -80,3 +102,8 @@ if __name__ == "__main__":
     init_db()
     app.run(debug=True, use_reloader=False)
 
+=======
+if __name__ == "__main__":
+    init_db()
+    app.run(debug=True)
+>>>>>>> cb8eae51d0efb2cc2d4df5f94877478fbee404d5
