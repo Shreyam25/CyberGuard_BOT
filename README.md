@@ -27,7 +27,8 @@ This will create a chat_history.db SQLite file if it doesn’t already exist. Th
 
 ### 5. Environment Variables
 Create a .env file and add the following:
-    API=<Your Google Generative AI API Key>
+    
+          API=<Your Google Generative AI API Key>
     
 ### 6. Running the Application
 To start the Flask app locally:
